@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour {
 
     public GameObject enemy;
 
-    public float StallTime = 3.0F;
+    public float StallTime = 1F;
 
 	void Start () {
 
@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour {
 
 
 	void Update () {
-
+        
 	}
 
 
@@ -26,12 +26,14 @@ public class EnemySpawner : MonoBehaviour {
 
         while(true)
         {
+
             GameObject bulletObject = Instantiate(enemy) as GameObject;
 
             BoxCollider2D box = GetComponent<BoxCollider2D>();
 
             var x = Random.Range(-(box.size.x / 2), (box.size.x / 2));
-            bulletObject.transform.position = transform.position + new Vector3(x, 0, 0);
+            var y = Random.Range(-(box.size.y / 2), (box.size.y / 2));
+            bulletObject.transform.position = transform.position + new Vector3(x, y, 0);
 
             yield return new WaitForSeconds(StallTime);
         }
