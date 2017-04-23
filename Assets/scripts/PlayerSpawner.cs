@@ -10,11 +10,13 @@ public class PlayerSpawner : MonoBehaviour {
 
     public static bool playerAlive = false;
 
+    private bool gameOverSet = false;
+
     private int numberOfLives = 3;
 	void Start () {
 
         SpawnPlayer();
-
+ 
     }
 
 
@@ -29,7 +31,16 @@ public class PlayerSpawner : MonoBehaviour {
                 SpawnPlayer();
             }else{
                 //This is the game over section
-                EnemySpawner.spawnEnemies = false;
+                int finalScore = ScoreManager.GetFinalScore();
+                GameOverManager.SetFinalScore(finalScore);
+                if(!gameOverSet){
+                    EnemySpawner.spawnEnemies = false;
+                    GameObject.FindGameObjectWithTag("GameMusic").GetComponent<AudioSource>().Stop();
+                    GameObject.FindGameObjectWithTag("GameOverMusic").GetComponent<AudioSource>().Play();
+                    gameOverSet = true;
+                }
+                
+
             }
         }
 	}
@@ -42,7 +53,6 @@ public class PlayerSpawner : MonoBehaviour {
 			GameObject playerObject = Instantiate(player) as GameObject;
             playerObject.transform.position = new Vector3(-6, 0, 0);
             playerAlive = true;
-            Debug.Log("Spawn has been called");
         }
 
     }
