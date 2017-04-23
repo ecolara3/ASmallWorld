@@ -10,6 +10,9 @@ public class HealthScript : MonoBehaviour
   /// </summary>
   public int hp = 1;
 
+  //Score Value
+  public int scoreValue = 10;
+
   /// <summary>
   /// Enemy or player?
   /// </summary>
@@ -22,11 +25,14 @@ public class HealthScript : MonoBehaviour
   public void Damage(int damageCount)
   {
     hp -= damageCount;
-
+	ScoreManager.score += scoreValue;
     if (hp <= 0)
     {
+
+	  
       // Dead!
       Destroy(gameObject);
+
     }
   }
 

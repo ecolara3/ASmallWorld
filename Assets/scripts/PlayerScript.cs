@@ -67,6 +67,29 @@ public class PlayerScript : MonoBehaviour
 
     }
 
+	void OnCollisionEnter2D(Collision2D collision)
+  	{
+    	bool damagePlayer = false;
+
+		// Collision with enemy
+		HealthScript enemy = collision.gameObject.GetComponent<HealthScript>();
+		if (enemy != null)
+		{
+			// Kill the enemy
+			HealthScript enemyHealth = enemy.GetComponent<HealthScript>();
+			if (enemyHealth != null) enemyHealth.Damage(enemyHealth.hp);
+
+			damagePlayer = true;
+		}
+
+		// Damage the player
+		if (damagePlayer)
+		{
+		HealthScript playerHealth = this.GetComponent<HealthScript>();
+		if (playerHealth != null) playerHealth.Damage(1);
+		}
+  	}	
+
     void FixedUpdate()
     {
         // 5 - Get the component and store the reference
