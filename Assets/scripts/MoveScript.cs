@@ -27,8 +27,6 @@ public class MoveScript : MonoBehaviour
           speed.x * direction.x,
           speed.y * direction.y);
 
-		Debug.Log("Camera X: " + Camera.main.transform.position.x);
-		Debug.Log("Enemy X: " + this.gameObject.transform.position.x);
 
 		if (this.transform.position.x < Camera.main.transform.position.x-10
 		|| this.transform.position.x > Camera.main.transform.position.x+10)

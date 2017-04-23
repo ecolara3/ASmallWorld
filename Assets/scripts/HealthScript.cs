@@ -18,6 +18,8 @@ public class HealthScript : MonoBehaviour
   /// </summary>
   public bool isEnemy = true;
 
+  public GameObject player;
+
   /// <summary>
   /// Inflicts damage and check if the object should be destroyed
   /// </summary>
@@ -29,10 +31,11 @@ public class HealthScript : MonoBehaviour
     if (hp <= 0)
     {
 
+		  Destroy(gameObject);
+      if(!isEnemy){
+        PlayerSpawner.playerAlive = false;
+      }
 	  
-      // Dead!
-      Destroy(gameObject);
-
     }
   }
 
