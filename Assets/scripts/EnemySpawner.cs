@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour {
 
     public GameObject enemy;
 
-    public float StallTime = .5F;
+    public static float enemyStallTime = 1F;
 
     public static bool spawnEnemies = true;
 
@@ -37,7 +37,7 @@ public class EnemySpawner : MonoBehaviour {
             var y = Random.Range(-(box.size.y / 2), (box.size.y / 2));
             bulletObject.transform.position = transform.position + new Vector3(x, y, 0);
 
-            yield return new WaitForSeconds(StallTime);
+            yield return new WaitForSeconds(enemyStallTime);
         }
 
 

@@ -29,7 +29,7 @@ public class MoveScript : MonoBehaviour
 
 
 		if (this.transform.position.x < Camera.main.transform.position.x-10
-		|| this.transform.position.x > Camera.main.transform.position.x+12)
+		|| this.transform.position.x > Camera.main.transform.position.x+15)
 		{
 			
 			Destroy(this.gameObject);
