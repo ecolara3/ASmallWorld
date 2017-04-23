@@ -8,6 +8,8 @@ public class EnemySpawner : MonoBehaviour {
 
     public float StallTime = 1F;
 
+    public static bool spawnEnemies = true;
+
 	void Start () {
 
         StartCoroutine(Spawn());
@@ -24,7 +26,7 @@ public class EnemySpawner : MonoBehaviour {
     IEnumerator Spawn()
     {
 
-        while(true)
+        while(spawnEnemies)
         {
 
             GameObject bulletObject = Instantiate(enemy) as GameObject;

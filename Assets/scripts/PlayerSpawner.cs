@@ -10,6 +10,7 @@ public class PlayerSpawner : MonoBehaviour {
 
     public static bool playerAlive = false;
 
+    private int numberOfLives = 3;
 	void Start () {
 
         SpawnPlayer();
@@ -19,7 +20,17 @@ public class PlayerSpawner : MonoBehaviour {
 
 	void Update () {
         if(!playerAlive){
-            SpawnPlayer();
+            
+            GameObject life = GameObject.Find(numberOfLives.ToString());
+            Destroy(life);
+            numberOfLives -= 1;
+
+            if(numberOfLives>0){
+                SpawnPlayer();
+            }else{
+                //This is the game over section
+                EnemySpawner.spawnEnemies = false;
+            }
         }
 	}
 
