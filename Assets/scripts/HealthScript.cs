@@ -27,12 +27,13 @@ public class HealthScript : MonoBehaviour
   public void Damage(int damageCount)
   {
     hp -= damageCount;
-	ScoreManager.score += scoreValue;
+	  ScoreManager.score += scoreValue;
     if (hp <= 0)
     {
 
 		  Destroy(gameObject);
       SoundEffectsHelper.Instance.MakeExplosionSound();
+      SpecialEffectsHelper.Instance.Explosion(transform.position);
       if(!isEnemy){
         PlayerSpawner.playerAlive = false;
       }
