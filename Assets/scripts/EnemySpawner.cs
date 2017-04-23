@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour {
 
     public GameObject enemy;
 
-    public float StallTime = 1F;
+    public float StallTime = .5F;
 
     public static bool spawnEnemies = true;
 
