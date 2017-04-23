@@ -18,7 +18,8 @@ public class TitleScreen : MonoBehaviour {
         if (Input.anyKey)
         {
             Debug.Log("A key or mouse click has been detected");
-            //SceneManager.LoadScene(LevelEnum.ToString(), LoadSceneMode.Single);
+            Application.LoadLevel("Stage1");
+			//SceneManager.LoadScene("Stage1", LoadSceneMode.Single);
         }
 
 	}
