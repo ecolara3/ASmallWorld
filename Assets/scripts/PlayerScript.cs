@@ -26,8 +26,8 @@ public class PlayerScript : MonoBehaviour
           speed.y * inputY);
 
 		  // 5 - Shooting
-		bool shoot = Input.GetButtonDown("Fire1");
-		shoot |= Input.GetButtonDown("Fire2");
+		bool shoot = Input.GetKeyDown("space");
+		shoot |= Input.GetMouseButtonDown(0);
 		// Careful: For Mac users, ctrl + arrow is a bad idea
 
 		if (shoot)
