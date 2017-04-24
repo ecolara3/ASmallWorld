@@ -38,13 +38,20 @@ public class PlayerSpawner : MonoBehaviour {
                     GameObject.FindGameObjectWithTag("GameMusic").GetComponent<AudioSource>().Stop();
                     GameObject.FindGameObjectWithTag("GameOverMusic").GetComponent<AudioSource>().Play();
                     gameOverSet = true;
+                    playerAlive = false;
+                    StartCoroutine(AnyKeyToContinue());
                 }
                 
-
             }
         }
 	}
 
+    IEnumerator AnyKeyToContinue(){
+
+        yield return new WaitForSecondsRealtime(5);
+        ContinueManager.continueToTitleScreen();
+        
+    }
 
 
     public void SpawnPlayer(){
